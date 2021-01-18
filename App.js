@@ -21,28 +21,28 @@ export class App extends Component {
   }
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
-      if(!user){
+      if (!user) {
         this.setState({
           loggedIn: false,
           loaded: true,
-        })
+        });
       } else {
         this.setState({
           loggedIn: true,
           loaded: true,
-        })
+        });
       }
     });
   }
   render() {
-        const {loggedIn, loaded} = this.state;
-    if(
-      return(
-        <View>
+    const { loggedIn, loaded } = this.state;
+    if (!loaded) {
+      return (
+        <View style={styles.container}>
           <Text>Loading ...</Text>
         </View>
-      )
-    )
+      );
+    }
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Landing">
