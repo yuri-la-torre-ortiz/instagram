@@ -35,6 +35,14 @@ export class App extends Component {
     });
   }
   render() {
+        const {loggedIn, loaded} = this.state;
+    if(
+      return(
+        <View>
+          <Text>Loading ...</Text>
+        </View>
+      )
+    )
     return (
       <NavigationContainer>
         <Stack.Navigator initialRouteName="Landing">
