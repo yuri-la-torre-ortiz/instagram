@@ -67,7 +67,9 @@ export class App extends Component {
     }
 
     return (
-      <MainScreen />
+      <Provider store={store}>
+        <MainScreen />
+      </Provider>
     );
   }
 }
