@@ -16,6 +16,7 @@ import { createStackNavigator } from "@react-navigation/stack";
 
 import LandingScreen from "./components/auth/Landing";
 import RegistrationScreen from "./components/auth/Register";
+import MainScreen from "./components/Main";
 
 const Stack = createStackNavigator();
 
@@ -66,9 +67,7 @@ export class App extends Component {
     }
 
     return (
-      <View style={styles.container}>
-        <Text>User is logged in ...</Text>
-      </View>
+      <MainScreen />
     );
   }
 }
