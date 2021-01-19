@@ -1,9 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
+import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+
 import firebase from "firebase";
+
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUser } from "../redux/actions/index";
+
+const Tab = createBottomTabNavigator();
 
 export class Main extends Component {
   componentDidMount() {
