@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import { View, Text, StyleSheet } from "react-native";
-import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 
 import firebase from "firebase";
 
 import { connect } from "react-redux";
 import { bindActionCreators } from "redux";
 import { fetchUser } from "../redux/actions/index";
+
+import FeedScreen from "./main/Feed";
 
 const Tab = createBottomTabNavigator();
 
@@ -22,9 +24,9 @@ export class Main extends Component {
       return <View></View>;
     }
     return (
-      <View style={styles.container}>
-        <Text>{currentUser.name} is logged in ...</Text>
-      </View>
+      <Tab.Navigator>
+        <Tab.Screen name="Feed" component={FeedScreen} />
+      </Tab.Navigator>
     );
   }
 }
