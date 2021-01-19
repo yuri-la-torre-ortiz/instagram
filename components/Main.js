@@ -13,9 +13,12 @@ export class Main extends Component {
     const { currentUser } = this.props;
 
     console.log(currentUser);
+    if (currentUser === undefined) {
+      return <View></View>;
+    }
     return (
       <View style={styles.container}>
-        <Text>User is logged in ...</Text>
+        <Text>{currentUser.name} is logged in ...</Text>
       </View>
     );
   }
