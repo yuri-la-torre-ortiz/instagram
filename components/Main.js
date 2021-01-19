@@ -30,7 +30,7 @@ export class Main extends Component {
       return <View></View>;
     }
     return (
-      <Tab.Navigator>
+      <Tab.Navigator initialRouteName="Feed">
         <Tab.Screen
           name="Feed"
           component={FeedScreen}
