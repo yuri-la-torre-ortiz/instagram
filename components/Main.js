@@ -11,9 +11,12 @@ import { fetchUser } from "../redux/actions/index";
 
 import FeedScreen from "./main/Feed";
 import ProfileScreen from "./main/Profile";
-import AddScreen from "./main/Add";
 
 const Tab = createBottomTabNavigator();
+
+const EmptyScreen = () => {
+  return null;
+};
 
 export class Main extends Component {
   componentDidMount() {
@@ -54,7 +57,13 @@ export class Main extends Component {
         />
         <Tab.Screen
           name="Add"
-          component={AddScreen}
+          component={EmptyScreen}
+          listeners={({ navigation }) => ({
+            tabPress: (event) => {
+              event.preventDefault();
+              navigation.navigate("Add");
+            },
+          })}
           options={{
             tabBarLabel: "Add",
             tabBarIcon: ({ color, size }) => (
