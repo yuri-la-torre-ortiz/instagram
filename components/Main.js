@@ -30,12 +30,11 @@ export class Main extends Component {
       return <View></View>;
     }
     return (
-      <Tab.Navigator initialRouteName="Feed">
+      <Tab.Navigator initialRouteName="Feed" labeled={false}>
         <Tab.Screen
           name="Feed"
           component={FeedScreen}
           options={{
-            tabBarLabel: "Feed",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="home" color={color} size={26} />
             ),
@@ -45,7 +44,6 @@ export class Main extends Component {
           name="Profile"
           component={ProfileScreen}
           options={{
-            tabBarLabel: "Profile",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="account-circle"
@@ -65,7 +63,6 @@ export class Main extends Component {
             },
           })}
           options={{
-            tabBarLabel: "Add",
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons
                 name="eye-plus-outline"
