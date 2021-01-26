@@ -1,10 +1,11 @@
 import React, { useState, useEffect } from "react";
-import { StyleSheet, Text, View, Button } from "react-native";
+import { StyleSheet, Text, View, Button, Image } from "react-native";
 import { Camera } from "expo-camera";
 
 export default function App() {
   const [hasPermission, setHasPermission] = useState(null);
   const [camera, setCamera] = useState(null);
+  const [image, setImage] = useState(null);
   const [type, setType] = useState(Camera.Constants.Type.back);
 
   useEffect(() => {
@@ -17,7 +18,7 @@ export default function App() {
   const takePicture = async () => {
     if (camera) {
       const data = await camera.takePictureAsync(null);
-      console.log(data.uri);
+      setImage(data.uri);
     }
   };
 
@@ -51,6 +52,7 @@ export default function App() {
         }}
       ></Button>
       <Button title="Take Picture" onPress={() => takePicture()} />
+      {image && <Image source={{ uri: image }} style={styles.image} />}
     </View>
   );
 }
@@ -66,5 +68,8 @@ const styles = StyleSheet.create({
   camera: {
     flex: 1,
     aspectRatio: 1,
+  },
+  image: {
+    flex: 1,
   },
 });
