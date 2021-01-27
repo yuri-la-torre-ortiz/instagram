@@ -4,7 +4,7 @@ import { Camera } from "expo-camera";
 import * as ImagePicker from "expo-image-picker";
 
 export default function App() {
-  const [hasPermission, setHasPermission] = useState(null);
+  const [hasCameraPermission, setHasCameraPermission] = useState(null);
   const [hasGalleryPermission, setHasGalleryPermission] = useState(null);
   const [camera, setCamera] = useState(null);
   const [image, setImage] = useState(null);
@@ -12,8 +12,8 @@ export default function App() {
 
   useEffect(() => {
     (async () => {
-      const { status } = await Camera.requestPermissionsAsync();
-      setHasPermission(status === "granted");
+      const cameraStatus = await Camera.requestPermissionsAsync();
+      setHasCameraPermission(cameraStatus.status === "granted");
 
       const galleryStatus = await ImagePicker.requestMediaLibraryPermissionsAsync();
       if (galleryStatus.status !== "granted") {
@@ -46,10 +46,10 @@ export default function App() {
     }
   };
 
-  if (hasPermission === null || hasGalleryPermission === false) {
+  if (hasCameraPermission === null || hasGalleryPermission === false) {
     return <View />;
   }
-  if (hasPermission === false || hasGalleryPermission === false) {
+  if (hasCameraPermission === false || hasGalleryPermission === false) {
     return <Text>No access to camera</Text>;
   }
   return (
