@@ -5,11 +5,12 @@ import { connect } from "react-redux";
 
 function Profile(props) {
   const { currentUser, posts } = props;
-  console.log({currentUser, posts});
+  console.log({ currentUser, posts });
 
   return (
-    <View>
-      <Text>Profile Screen</Text>
+    <View style={styles.container}>
+      <Text>{currentUser.name}</Text>
+      <Text>{currentUser.email}</Text>
     </View>
   );
 }
@@ -20,3 +21,10 @@ const mapStateToProps = (store) => ({
 });
 
 export default connect(mapStateToProps, null)(Profile);
+
+const styles = StyleSheet.create({
+  container: {
+    flex: 1,
+    marginTop: 40,
+  },
+});
