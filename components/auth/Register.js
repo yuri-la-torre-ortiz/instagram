@@ -30,7 +30,6 @@ export default class Register extends Component {
             name,
             email,
           });
-        console.log(result);
       })
       .catch((error) => {
         console.log(error);

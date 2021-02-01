@@ -7,14 +7,12 @@ require("firebase/firebase-storage");
 
 export default function Save(props) {
   const [caption, setCaption] = useState("");
-  console.log(caption);
 
   const uploadImage = async () => {
     const uri = props.route.params.image;
     const childPath = `post/${
       firebase.auth().currentUser.uid
     }/${Math.random().toString(36)}`;
-    console.log(childPath);
 
     const response = await fetch(uri);
     const blob = await response.blob();
