@@ -9,8 +9,20 @@ function Profile(props) {
 
   return (
     <View style={styles.container}>
-      <Text>{currentUser.name}</Text>
-      <Text>{currentUser.email}</Text>
+      <View style={styles.userInfoContainer}>
+        <Text>{currentUser.name}</Text>
+        <Text>{currentUser.email}</Text>
+      </View>
+      <View style={styles.galleryContainer}>
+        <FlatList
+          numColumns={3}
+          horizontal={false}
+          data={posts}
+          renderItem={({ item }) => (
+            <Image style={styles.image} source={{ uri: item.downloadURL }} />
+          )}
+        />
+      </View>
     </View>
   );
 }
@@ -26,5 +38,15 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     marginTop: 40,
+  },
+  userInfoContainer: {
+    margin: 20,
+  },
+  galleryContainer: {
+    flex: 1,
+  },
+  image: {
+    flex: 1,
+    aspectRatio: 1 / 1,
   },
 });
