@@ -53,7 +53,6 @@ export default connect(mapStateToProps, null)(Profile);
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    marginTop: 40,
   },
   userInfoContainer: {
     margin: 20,
